@@ -689,10 +689,10 @@ footer p {
 <nav>
   <a href="#home" class="nav-logo">Match-Box</a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
     <li><a href="#sports">Sports</a></li>
     <li><a href="#coaching">Coaching</a></li>
     <li><a href="#centers">Centers</a></li>
+    <li><a href="#events">Packages</a></li>
   </ul>
 </nav>
 
@@ -702,6 +702,7 @@ footer p {
   <div class="hero-scanlines"></div>
   <div class="hero-content">
     <p class="hero-eyebrow">Mysore's Premier Sports Facilty</p>
+    <img src="Matchboxgreenlogo.png" alt="Match-Box Logo" style="width:clamp(80px,12vw,140px);margin:12px auto 8px;display:block;filter:brightness(1.1) drop-shadow(0 0 18px rgba(0,255,106,0.35));">
     <h1 class="hero-title">Match<span>-Box</span></h1>
     <p class="hero-sub">Set the field on fire</p>
     <a href="https://wa.me/919620192323?text=Hi%20I%20would%20like%20to%20book%20a%20slot%20at%20Match-Box." class="btn-book" target="_blank">
@@ -814,7 +815,10 @@ footer p {
 <section id="coaching">
   <div style="max-width:1200px;margin:auto;">
     <p class="section-label reveal">Train With The Best</p>
-    <h2 class="section-title reveal">Coaching<br>Programs</h2>
+    <div style="display:flex;align-items:center;gap:24px;margin-bottom:48px;">
+      <h2 class="section-title reveal" style="margin-bottom:0;">Coaching<br>Programs</h2>
+      <img src="Matchboxgreenlogo.png" alt="Match-Box Logo" class="reveal" style="width:90px;opacity:0.75;filter:brightness(1.2) drop-shadow(0 0 12px rgba(0,255,106,0.3));flex-shrink:0;">
+    </div>
     <div class="coaching-grid">
       <div class="coaching-card reveal">
         <div class="coaching-card-img-wrap">
@@ -843,7 +847,10 @@ footer p {
 <section id="events">
   <div style="max-width:1200px;margin:auto;">
     <p class="section-label reveal">Beyond The Game</p>
-    <h2 class="section-title reveal">Events &<br>Packages</h2>
+    <div style="display:flex;align-items:center;gap:24px;margin-bottom:48px;">
+      <h2 class="section-title reveal" style="margin-bottom:0;">Events &<br>Packages</h2>
+      <img src="Matchboxgreenlogo.png" alt="Match-Box Logo" class="reveal" style="width:90px;opacity:0.75;filter:brightness(1.2) drop-shadow(0 0 12px rgba(0,255,106,0.3));flex-shrink:0;">
+    </div>
     <div class="events-grid">
       <div class="event-card reveal">
         <div class="event-card-img-wrap">
@@ -918,8 +925,7 @@ footer p {
         <div class="contact-card-label">Locations</div>
         <p>
           <strong>Vijaynagar</strong> — 3rd Stage, Mysuru 570030<br>
-          <strong>Hebbal</strong> — Hebbal Village, Mysuru 570017<br>
-          <strong>Yadavgiri</strong> — Medar Block, Mysuru 570020
+          <strong>Hebbal</strong> — Hebbal Village, Mysuru 570017
         </p>
       </div>
     </div>
@@ -985,4 +991,3 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 </body>
 </html>
-
