@@ -34,7 +34,6 @@ body {
   cursor: none;
 }
 
-/* CUSTOM CURSOR */
 .cursor {
   position: fixed;
   width: 10px; height: 10px;
@@ -57,7 +56,6 @@ body {
   transition: transform 0.12s ease, width 0.2s, height 0.2s;
 }
 
-/* NOISE OVERLAY */
 body::before {
   content: '';
   position: fixed;
@@ -68,12 +66,10 @@ body::before {
   opacity: 0.4;
 }
 
-/* SCROLLBAR */
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: var(--dark); }
 ::-webkit-scrollbar-thumb { background: var(--green-dim); border-radius: 2px; }
 
-/* ── NAV ── */
 nav {
   position: fixed; top: 0; width: 100%;
   display: flex; justify-content: space-between; align-items: center;
@@ -117,7 +113,6 @@ nav {
 .nav-links a:hover { color: var(--green); }
 .nav-links a:hover::after { width: 100%; }
 
-/* ── HERO ── */
 header {
   position: relative;
   height: 100vh;
@@ -136,25 +131,13 @@ header {
 
 .hero-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(
-    160deg,
-    rgba(5,11,15,0.85) 0%,
-    rgba(5,11,15,0.55) 50%,
-    rgba(5,11,15,0.9) 100%
-  );
+  background: linear-gradient(160deg, rgba(5,11,15,0.85) 0%, rgba(5,11,15,0.55) 50%, rgba(5,11,15,0.9) 100%);
   z-index: 1;
 }
 
-/* scan line effect */
 .hero-scanlines {
   position: absolute; inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgba(0,0,0,0.07) 2px,
-    rgba(0,0,0,0.07) 4px
-  );
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.07) 2px, rgba(0,0,0,0.07) 4px);
   z-index: 2; pointer-events: none;
 }
 
@@ -175,9 +158,7 @@ header {
   line-height: 0.9;
   letter-spacing: 4px;
   color: white;
-  text-shadow:
-    0 0 60px rgba(0,255,106,0.2),
-    0 2px 0 rgba(0,0,0,0.5);
+  text-shadow: 0 0 60px rgba(0,255,106,0.2), 0 2px 0 rgba(0,0,0,0.5);
   animation: fadeUp 0.8s 0.15s ease both;
 }
 
@@ -233,7 +214,6 @@ header {
   animation: scrollPulse 2s ease infinite;
 }
 
-/* ── SECTION BASE ── */
 section {
   padding: 100px 60px;
   position: relative;
@@ -255,11 +235,7 @@ section {
   margin-bottom: 48px;
 }
 
-/* ── ABOUT ── */
-#about {
-  background: var(--dark2);
-  overflow: hidden;
-}
+#about { background: var(--dark2); overflow: hidden; }
 
 .about-grid {
   display: grid;
@@ -290,10 +266,7 @@ section {
   backdrop-filter: blur(10px);
   transition: border-color 0.3s, background 0.3s;
 }
-.stat-card:hover {
-  background: rgba(0,255,106,0.06);
-  border-color: rgba(0,255,106,0.4);
-}
+.stat-card:hover { background: rgba(0,255,106,0.06); border-color: rgba(0,255,106,0.4); }
 .stat-card::before {
   content: '';
   position: absolute; top: 0; left: 0;
@@ -318,7 +291,6 @@ section {
   margin-top: 6px;
 }
 
-/* ── SPORTS ── */
 #sports { background: var(--dark); }
 
 .sports-grid {
@@ -341,10 +313,7 @@ section {
   transition: transform 0.7s ease, filter 0.5s ease;
   filter: brightness(0.55) saturate(0.8);
 }
-.sport-card:hover img {
-  transform: scale(1.06);
-  filter: brightness(0.7) saturate(1.1);
-}
+.sport-card:hover img { transform: scale(1.06); filter: brightness(0.7) saturate(1.1); }
 
 .sport-card-overlay {
   position: absolute; inset: 0;
@@ -396,7 +365,6 @@ section {
 }
 .sport-card:hover .sport-tag { opacity: 1; transform: translateY(0); }
 
-/* glow line on hover */
 .sport-card::after {
   content: '';
   position: absolute; top: 0; left: 0;
@@ -410,7 +378,6 @@ section {
 }
 .sport-card:hover::after { transform: scaleX(1); }
 
-/* ── CENTERS ── */
 #centers { background: var(--dark2); }
 
 .centers-grid {
@@ -427,10 +394,7 @@ section {
   text-decoration: none;
   display: block;
 }
-.center-card:hover {
-  border-color: rgba(0,255,106,0.5);
-  transform: translateY(-4px);
-}
+.center-card:hover { border-color: rgba(0,255,106,0.5); transform: translateY(-4px); }
 
 .center-card img {
   width: 100%; height: 280px;
@@ -461,7 +425,6 @@ section {
   font-size: 0.85rem; color: var(--muted); line-height: 1.7;
 }
 
-/* ── COACHING ── */
 #coaching { background: var(--dark); }
 
 .coaching-grid {
@@ -476,10 +439,7 @@ section {
   backdrop-filter: blur(12px);
   transition: border-color 0.3s, background 0.3s;
 }
-.coaching-card:hover {
-  border-color: rgba(0,255,106,0.45);
-  background: rgba(0,255,106,0.04);
-}
+.coaching-card:hover { border-color: rgba(0,255,106,0.45); background: rgba(0,255,106,0.04); }
 
 .coaching-card-img {
   width: 100%; height: 280px;
@@ -488,10 +448,7 @@ section {
   transition: filter 0.4s, transform 0.6s;
   display: block;
 }
-.coaching-card:hover .coaching-card-img {
-  filter: brightness(0.8) saturate(1.1);
-  transform: scale(1.03);
-}
+.coaching-card:hover .coaching-card-img { filter: brightness(0.8) saturate(1.1); transform: scale(1.03); }
 
 .coaching-card-img-wrap {
   overflow: hidden;
@@ -503,9 +460,7 @@ section {
   background: linear-gradient(to bottom, transparent 50%, var(--dark) 100%);
 }
 
-.coaching-card-body {
-  padding: 32px 32px 40px;
-}
+.coaching-card-body { padding: 32px 32px 40px; }
 
 .coaching-badge {
   display: inline-block;
@@ -525,9 +480,7 @@ section {
   margin-bottom: 16px;
 }
 
-.coaching-card-body p {
-  font-size: 0.95rem; color: var(--muted); line-height: 1.85;
-}
+.coaching-card-body p { font-size: 0.95rem; color: var(--muted); line-height: 1.85; }
 
 .coaching-card::before {
   content: '';
@@ -541,7 +494,6 @@ section {
 }
 .coaching-card:hover::before { transform: scaleX(1); }
 
-/* ── EVENTS ── */
 #events { background: var(--dark2); }
 
 .events-grid {
@@ -556,11 +508,7 @@ section {
   backdrop-filter: blur(12px);
   transition: border-color 0.3s, background 0.3s, transform 0.3s;
 }
-.event-card:hover {
-  border-color: rgba(0,255,106,0.45);
-  background: rgba(0,255,106,0.04);
-  transform: translateY(-4px);
-}
+.event-card:hover { border-color: rgba(0,255,106,0.45); background: rgba(0,255,106,0.04); transform: translateY(-4px); }
 
 .event-card-img-wrap {
   overflow: hidden;
@@ -579,18 +527,11 @@ section {
   transition: filter 0.4s, transform 0.6s;
   display: block;
 }
-.event-card:hover .event-card-img {
-  filter: brightness(0.8) saturate(1.1);
-  transform: scale(1.04);
-}
+.event-card:hover .event-card-img { filter: brightness(0.8) saturate(1.1); transform: scale(1.04); }
 
-.event-card-body {
-  padding: 28px 28px 36px;
-}
+.event-card-body { padding: 28px 28px 36px; }
 
-.event-icon {
-  font-size: 1.8rem; margin-bottom: 14px; display: block;
-}
+.event-icon { font-size: 1.8rem; margin-bottom: 14px; display: block; }
 
 .event-card-title {
   font-family: 'Bebas Neue', sans-serif;
@@ -599,9 +540,7 @@ section {
   margin-bottom: 12px;
 }
 
-.event-card-body p {
-  font-size: 0.88rem; color: var(--muted); line-height: 1.85;
-}
+.event-card-body p { font-size: 0.88rem; color: var(--muted); line-height: 1.85; }
 
 .event-card::before {
   content: '';
@@ -614,10 +553,8 @@ section {
 }
 .event-card:hover::before { height: 100%; }
 
-/* ── INSTAGRAM ── */
 #instagram { background: var(--dark); }
 
-/* ── GALLERY ── */
 #gallery { background: var(--dark3); }
 
 .gallery-grid {
@@ -637,10 +574,7 @@ section {
   transition: transform 0.6s ease, filter 0.4s;
   filter: brightness(0.75) saturate(0.85);
 }
-.gallery-item:hover img {
-  transform: scale(1.06);
-  filter: brightness(0.95) saturate(1.1);
-}
+.gallery-item:hover img { transform: scale(1.06); filter: brightness(0.95) saturate(1.1); }
 .gallery-item::after {
   content: '';
   position: absolute; inset: 0;
@@ -649,21 +583,11 @@ section {
 }
 .gallery-item:hover::after { opacity: 1; }
 
-/* ── CONTACT ── */
-#contact {
-  background: var(--dark2);
-  overflow: hidden;
-}
+#contact { background: var(--dark2); overflow: hidden; }
 
-.contact-inner {
-  max-width: 1000px; margin: auto;
-  position: relative;
-}
+.contact-inner { max-width: 1000px; margin: auto; position: relative; }
 
-.contact-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 2px;
-}
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
 
 .contact-card {
   background: var(--glass);
@@ -673,28 +597,19 @@ section {
   position: relative; overflow: hidden;
   transition: border-color 0.3s, background 0.3s;
 }
-.contact-card:hover {
-  background: rgba(0,255,106,0.05);
-  border-color: rgba(0,255,106,0.4);
-}
+.contact-card:hover { background: rgba(0,255,106,0.05); border-color: rgba(0,255,106,0.4); }
 
-.contact-card-icon {
-  font-size: 1.6rem; margin-bottom: 20px;
-}
+.contact-card-icon { font-size: 1.6rem; margin-bottom: 20px; }
 .contact-card-label {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 0.7rem; letter-spacing: 5px;
   text-transform: uppercase; color: var(--green);
   margin-bottom: 16px;
 }
-.contact-card p {
-  font-size: 1rem; color: var(--muted); line-height: 2;
-}
+.contact-card p { font-size: 1rem; color: var(--muted); line-height: 2; }
 .contact-card strong { color: white; font-weight: 500; }
 
-.contact-cta {
-  margin-top: 48px; text-align: center;
-}
+.contact-cta { margin-top: 48px; text-align: center; }
 .contact-cta a {
   display: inline-flex; align-items: center; gap: 12px;
   padding: 18px 48px;
@@ -707,13 +622,8 @@ section {
   transition: background 0.3s, color 0.3s, box-shadow 0.3s;
   box-shadow: 0 0 20px rgba(0,255,106,0.1);
 }
-.contact-cta a:hover {
-  background: var(--green);
-  color: var(--dark);
-  box-shadow: 0 0 40px rgba(0,255,106,0.4);
-}
+.contact-cta a:hover { background: var(--green); color: var(--dark); box-shadow: 0 0 40px rgba(0,255,106,0.4); }
 
-/* ── FOOTER ── */
 footer {
   background: var(--dark);
   border-top: 1px solid rgba(0,255,106,0.08);
@@ -732,7 +642,6 @@ footer p {
   color: var(--muted); text-transform: uppercase;
 }
 
-/* ── ANIMATIONS ── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(30px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -742,32 +651,23 @@ footer p {
   50% { opacity: 0.2; }
 }
 
-/* Reveal on scroll */
 .reveal {
   opacity: 0; transform: translateY(40px);
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* ── MOBILE ── */
 @media (max-width: 900px) {
-  nav { padding: 16px 24px; }
-  .nav-links { gap: 20px; }
+  nav { padding: 14px 20px; gap: 12px; }
+  .nav-logo { font-size: 1.3rem; letter-spacing: 2px; white-space: nowrap; }
+  .nav-links { gap: 14px; }
+  .nav-links a { font-size: 0.75rem; letter-spacing: 1px; }
   section { padding: 80px 24px; }
-
-  .about-grid,
-  .sports-grid,
-  .centers-grid,
-  .coaching-grid,
-  .events-grid,
-  .contact-grid { grid-template-columns: 1fr; }
-
+  .about-grid, .sports-grid, .centers-grid, .coaching-grid, .events-grid, .contact-grid { grid-template-columns: 1fr; }
   .sports-grid { gap: 3px; }
   .sport-card { aspect-ratio: 4/3; }
   .sport-desc, .sport-tag { opacity: 1; transform: none; }
-
   .gallery-grid { grid-template-columns: 1fr 1fr; }
-
   footer { flex-direction: column; gap: 12px; text-align: center; }
 }
 
@@ -783,11 +683,9 @@ footer p {
 </head>
 <body>
 
-<!-- CURSOR -->
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- NAV -->
 <nav>
   <a href="#home" class="nav-logo">Match-Box</a>
   <ul class="nav-links">
@@ -798,7 +696,6 @@ footer p {
   </ul>
 </nav>
 
-<!-- HERO -->
 <header id="home">
   <div class="hero-bg" id="heroBg"></div>
   <div class="hero-overlay"></div>
@@ -807,8 +704,7 @@ footer p {
     <p class="hero-eyebrow">Mysore's Premier Sports Facilty</p>
     <h1 class="hero-title">Match<span>-Box</span></h1>
     <p class="hero-sub">Set the field on fire</p>
-    <a href="https://wa.me/919620192323?text=Hi%20I%20would%20like%20to%20book%20a%20slot%20at%20Match-Box."
-       class="btn-book" target="_blank">
+    <a href="https://wa.me/919620192323?text=Hi%20I%20would%20like%20to%20book%20a%20slot%20at%20Match-Box." class="btn-book" target="_blank">
       <span>⚡ Book Now</span>
     </a>
   </div>
@@ -818,7 +714,6 @@ footer p {
   </div>
 </header>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="about-grid">
     <div class="about-text reveal">
@@ -847,7 +742,6 @@ footer p {
   </div>
 </section>
 
-<!-- SPORTS -->
 <section id="sports">
   <div style="max-width:1200px;margin:auto;">
     <p class="section-label reveal">What We Offer</p>
@@ -887,7 +781,6 @@ footer p {
   </div>
 </section>
 
-<!-- CENTERS -->
 <section id="centers">
   <div style="max-width:1200px;margin:auto;">
     <p class="section-label reveal">Find Us</p>
@@ -918,13 +811,11 @@ footer p {
   </div>
 </section>
 
-<!-- COACHING -->
 <section id="coaching">
   <div style="max-width:1200px;margin:auto;">
     <p class="section-label reveal">Train With The Best</p>
     <h2 class="section-title reveal">Coaching<br>Programs</h2>
     <div class="coaching-grid">
-
       <div class="coaching-card reveal">
         <div class="coaching-card-img-wrap">
           <img src="coaching_football.jpg" alt="Football Coaching" class="coaching-card-img">
@@ -935,7 +826,6 @@ footer p {
           <p>Train with experienced coaches from Vijaynagar Football Club, certified by AIFF and AFC. Our structured sessions focus on technique, game intelligence, and physical development to help players improve and perform at their best.</p>
         </div>
       </div>
-
       <div class="coaching-card reveal">
         <div class="coaching-card-img-wrap">
           <img src="coaching_pickleball.jpg" alt="Pickleball Coaching" class="coaching-card-img">
@@ -946,18 +836,15 @@ footer p {
           <p>Start your pickleball journey with expert coaching designed for all skill levels. Improve your technique, build confidence, and enjoy the fastest-growing sport in a fun, competitive environment.</p>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- EVENTS -->
 <section id="events">
   <div style="max-width:1200px;margin:auto;">
     <p class="section-label reveal">Beyond The Game</p>
     <h2 class="section-title reveal">Events &<br>Packages</h2>
     <div class="events-grid">
-
       <div class="event-card reveal">
         <div class="event-card-img-wrap">
           <img src="events_corporate.jpg" alt="Corporate Events" class="event-card-img">
@@ -968,7 +855,6 @@ footer p {
           <p>Corporate sports solutions designed for team bonding and employee engagement. Choose from football, pickleball, or cricket with flexible one-day or monthly packages, fully customizable to suit your team's needs.</p>
         </div>
       </div>
-
       <div class="event-card reveal">
         <div class="event-card-img-wrap">
           <img src="events_sportsday.jpg" alt="Sports Days" class="event-card-img">
@@ -979,7 +865,6 @@ footer p {
           <p>Host your school's sports day at our premium turf facilities. With multiple sports options, spacious grounds, and organized event support, we provide the perfect venue for an exciting and memorable sports day.</p>
         </div>
       </div>
-
       <div class="event-card reveal">
         <div class="event-card-img-wrap">
           <img src="events_other.jpg" alt="Other Events" class="event-card-img">
@@ -990,23 +875,19 @@ footer p {
           <p>Have another event in mind? We'd love to host it. Get in touch with us and let's make it happen at our turf.</p>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- INSTAGRAM -->
 <section id="instagram">
   <div style="max-width:1200px;margin:auto;">
     <p class="section-label reveal">Social</p>
     <h2 class="section-title reveal">Follow Us On<br>Instagram</h2>
-    <!-- Elfsight Instagram Feed | Untitled Instagram Feed -->
     <script src="https://elfsightcdn.com/platform.js" async></script>
     <div class="elfsight-app-98c87d02-5c74-45d9-9f49-59a8460a8bb6" data-elfsight-app-lazy></div>
   </div>
 </section>
 
-<!-- GALLERY -->
 <section id="gallery">
   <div style="max-width:1200px;margin:auto;">
     <p class="section-label reveal">The Grounds</p>
@@ -1019,7 +900,6 @@ footer p {
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="contact-inner">
     <p class="section-label reveal">Get In Touch</p>
@@ -1051,7 +931,6 @@ footer p {
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-logo">Match-Box</div>
   <p>© 2026 Match-Box. All Rights Reserved.</p>
@@ -1059,7 +938,6 @@ footer p {
 </footer>
 
 <script>
-// Custom cursor
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursorRing');
 let mx = 0, my = 0, rx = 0, ry = 0;
@@ -1072,22 +950,14 @@ function animateCursor() {
 }
 animateCursor();
 document.querySelectorAll('a, .sport-card, .center-card, .stat-card').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    ring.style.width = '56px'; ring.style.height = '56px';
-    ring.style.borderColor = 'rgba(0,255,106,0.8)';
-  });
-  el.addEventListener('mouseleave', () => {
-    ring.style.width = '36px'; ring.style.height = '36px';
-    ring.style.borderColor = 'rgba(0,255,106,0.5)';
-  });
+  el.addEventListener('mouseenter', () => { ring.style.width = '56px'; ring.style.height = '56px'; ring.style.borderColor = 'rgba(0,255,106,0.8)'; });
+  el.addEventListener('mouseleave', () => { ring.style.width = '36px'; ring.style.height = '36px'; ring.style.borderColor = 'rgba(0,255,106,0.5)'; });
 });
 
-// Hero slideshow
 const heroImages = ['turf1.jpg','turf2.jpg','turf3.jpg'];
 let idx = 0;
 const heroBg = document.getElementById('heroBg');
 const imgs = heroImages.map(src => { const i = new Image(); i.src = src; return src; });
-
 function nextHero() {
   heroBg.style.opacity = '0';
   setTimeout(() => {
@@ -1102,7 +972,6 @@ heroBg.style.opacity = '1';
 heroBg.style.transition = 'opacity 1.2s ease';
 setInterval(nextHero, 5000);
 
-// Scroll reveal
 const observer = new IntersectionObserver(entries => {
   entries.forEach((e, i) => {
     if (e.isIntersecting) {
@@ -1116,5 +985,3 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 </body>
 </html>
-
-
