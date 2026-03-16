@@ -561,6 +561,276 @@ section {
 
 #instagram { background: var(--dark); }
 
+/* ── BLOG SECTION ─────────────────────────────────────── */
+#blog { background: var(--dark2); }
+
+.blog-featured {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin-bottom: 2px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+.blog-featured:hover { border-color: rgba(0,255,106,0.45); }
+
+.blog-featured-img {
+  overflow: hidden;
+  position: relative;
+  min-height: 300px;
+}
+.blog-featured-img img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  filter: brightness(0.6) saturate(0.85);
+  transition: transform 0.6s ease, filter 0.4s;
+}
+.blog-featured:hover .blog-featured-img img {
+  transform: scale(1.04);
+  filter: brightness(0.75) saturate(1.1);
+}
+.blog-featured-badge {
+  position: absolute; top: 20px; left: 20px;
+  background: var(--green); color: var(--dark);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  padding: 5px 14px;
+}
+
+.blog-featured-body {
+  padding: 44px 40px;
+  display: flex; flex-direction: column; justify-content: center;
+  border-left: 1px solid var(--glass-border);
+  position: relative;
+}
+.blog-featured-body::before {
+  content: '';
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 2px;
+  background: var(--green);
+  box-shadow: 0 0 15px var(--green);
+}
+
+.blog-category {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem; letter-spacing: 4px;
+  text-transform: uppercase; color: var(--green);
+  margin-bottom: 14px; display: block;
+}
+
+.blog-featured-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  letter-spacing: 2px; color: white;
+  line-height: 1.1; margin-bottom: 16px;
+}
+
+.blog-featured-body p {
+  font-size: 0.9rem; color: var(--muted);
+  line-height: 1.9; margin-bottom: 28px;
+}
+
+.btn-blog {
+  display: inline-flex; align-items: center; gap: 10px;
+  width: fit-content;
+  padding: 12px 28px;
+  border: 1px solid var(--green);
+  color: var(--green);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase;
+  text-decoration: none; border-radius: 2px;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 14px rgba(0,255,106,0.1);
+}
+.btn-blog:hover {
+  background: var(--green); color: var(--dark);
+  box-shadow: 0 0 30px rgba(0,255,106,0.4);
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.blog-card {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+  transition: border-color 0.3s, background 0.3s, transform 0.3s;
+  position: relative;
+}
+.blog-card:hover {
+  border-color: rgba(0,255,106,0.45);
+  background: rgba(0,255,106,0.04);
+  transform: translateY(-4px);
+}
+.blog-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 2px;
+  background: var(--green);
+  box-shadow: 0 0 15px var(--green);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.4s ease;
+  z-index: 2;
+}
+.blog-card:hover::before { transform: scaleX(1); }
+
+.blog-card-img-wrap {
+  overflow: hidden; position: relative;
+}
+.blog-card-img-wrap::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, var(--dark2) 100%);
+}
+.blog-card-img-wrap img {
+  width: 100%; height: 200px;
+  object-fit: cover; display: block;
+  filter: brightness(0.6) saturate(0.8);
+  transition: transform 0.6s, filter 0.4s;
+}
+.blog-card:hover .blog-card-img-wrap img {
+  transform: scale(1.05);
+  filter: brightness(0.8) saturate(1.1);
+}
+
+.blog-card-tag {
+  position: absolute; bottom: 12px; left: 12px;
+  background: var(--dark);
+  border: 1px solid rgba(0,255,106,0.3);
+  color: var(--green);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase;
+  padding: 3px 10px;
+  z-index: 1;
+}
+
+.blog-card-body { padding: 24px 24px 32px; }
+
+.blog-card-date {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.7rem; letter-spacing: 3px;
+  color: var(--muted); text-transform: uppercase;
+  display: block; margin-bottom: 10px;
+}
+
+.blog-card-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem; letter-spacing: 2px;
+  color: white; line-height: 1.15;
+  margin-bottom: 12px;
+}
+
+.blog-card-body p {
+  font-size: 0.85rem; color: var(--muted);
+  line-height: 1.85; margin-bottom: 20px;
+}
+
+.blog-read-more {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--green); text-decoration: none;
+  border-bottom: 1px solid rgba(0,255,106,0.3);
+  padding-bottom: 2px;
+  transition: border-color 0.2s;
+}
+.blog-read-more:hover { border-color: var(--green); }
+
+/* ── BLOG INLINE EXPAND ───────────────────────────────── */
+.blog-expand {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.6s ease, opacity 0.4s ease;
+  opacity: 0;
+  grid-column: 1 / -1;
+}
+.blog-expand.open {
+  max-height: 1000px;
+  opacity: 1;
+}
+.blog-expand-inner {
+  border: 1px solid rgba(0,255,106,0.3);
+  border-top: 2px solid var(--green);
+  background: var(--dark3);
+  padding: 48px 52px;
+  position: relative;
+}
+.blog-expand-inner::before {
+  content: '';
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 2px;
+  background: var(--green);
+  box-shadow: 0 0 20px var(--green);
+}
+.blog-expand-header {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 32px;
+}
+.blog-expand-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  letter-spacing: 2px; color: white; line-height: 1.1;
+}
+.blog-expand-close {
+  background: transparent;
+  border: 1px solid rgba(0,255,106,0.3);
+  color: var(--green);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase;
+  padding: 8px 20px; cursor: none;
+  transition: background 0.2s, border-color 0.2s;
+  flex-shrink: 0; margin-left: 24px; margin-top: 6px;
+}
+.blog-expand-close:hover { background: rgba(0,255,106,0.08); border-color: var(--green); }
+.blog-expand-meta {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.72rem; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--green); margin-bottom: 28px; display: block;
+}
+.blog-expand-body {
+  font-size: 1rem; color: var(--muted);
+  line-height: 2; max-width: 780px;
+}
+.blog-expand-body p { margin-bottom: 20px; }
+.blog-expand-body h4 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem; letter-spacing: 2px;
+  color: white; margin: 32px 0 12px;
+}
+
+/* Featured post expand */
+.blog-featured-expand {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.6s ease, opacity 0.4s ease;
+  opacity: 0;
+  border-top: none;
+}
+.blog-featured-expand.open {
+  max-height: 1000px; opacity: 1;
+  border-top: 1px solid rgba(0,255,106,0.15);
+}
+.blog-featured-expand-inner {
+  padding: 40px 44px;
+  background: var(--dark3);
+  position: relative;
+}
+.blog-featured-expand-inner p { font-size: 0.95rem; color: var(--muted); line-height: 2; margin-bottom: 18px; }
+.blog-featured-expand-inner h4 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem; letter-spacing: 2px;
+  color: white; margin: 28px 0 10px;
+}
+.blog-card.active { transform: translateY(0) !important; }
+
+/* ── END BLOG SECTION ─────────────────────────────────── */
+
 #gallery { background: var(--dark3); }
 
 .gallery-grid {
@@ -675,6 +945,10 @@ footer p {
   .sport-desc, .sport-tag { opacity: 1; transform: none; }
   .gallery-grid { grid-template-columns: 1fr 1fr; }
   footer { flex-direction: column; gap: 12px; text-align: center; }
+  /* Blog responsive */
+  .blog-featured { grid-template-columns: 1fr; }
+  .blog-featured-body { border-left: none; border-top: 1px solid var(--glass-border); padding: 32px 28px; }
+  .blog-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 600px) {
@@ -683,6 +957,7 @@ footer p {
   .hero-title { font-size: 5rem; }
   .gallery-grid { grid-template-columns: 1fr; }
   .about-stats { grid-template-columns: 1fr 1fr; }
+  .blog-grid { grid-template-columns: 1fr; }
 }
 
 </style>
@@ -697,8 +972,8 @@ footer p {
   <ul class="nav-links">
     <li><a href="#sports">Sports</a></li>
     <li><a href="#coaching">Coaching</a></li>
-    <li><a href="#centers">Centers</a></li>
     <li><a href="#events">Packages</a></li>
+    <li><a href="#blog">Blog</a></li>
   </ul>
 </nav>
 
@@ -905,6 +1180,157 @@ footer p {
   </div>
 </section>
 
+<!-- ── BLOG SECTION ─────────────────────────────────────── -->
+<section id="blog">
+  <div style="max-width:1200px;margin:auto;">
+
+    <p class="section-label reveal">From The Field</p>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:48px;">
+      <h2 class="section-title reveal" style="margin-bottom:0;">Latest<br>Stories</h2>
+      <img src="Matchboxgreenlogo.png" alt="Match-Box Logo" class="reveal"
+        style="width:200px;opacity:0.75;filter:drop-shadow(0 0 12px rgba(0,255,106,0.3));flex-shrink:0;">
+    </div>
+
+    <!-- Featured Post -->
+    <div class="blog-featured reveal" style="flex-direction:column;display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--glass-border);background:var(--glass);backdrop-filter:blur(12px);overflow:hidden;transition:border-color 0.3s;margin-bottom:2px;">
+      <div class="blog-featured-img">
+        <img src="gallery1.jpg" alt="Featured Blog Post">
+        <span class="blog-featured-badge">⚡ Featured</span>
+      </div>
+      <div class="blog-featured-body">
+        <span class="blog-category">Football · March 2026</span>
+        <div class="blog-featured-title">Why Playing Football Twice a Week Changed Everything For Our Members</div>
+        <p>From fitness gains to friendships built on the turf — we sat down with our community to hear how regular play at Match-Box has transformed their weekdays.</p>
+        <button class="btn-blog" onclick="toggleFeatured(this)">Read Article →</button>
+      </div>
+      <!-- Featured Expand Panel (spans full width) -->
+      <div class="blog-featured-expand" id="featured-expand" style="grid-column:1/-1;">
+        <div class="blog-featured-expand-inner">
+          <span style="font-family:'Barlow Condensed',sans-serif;font-size:0.7rem;letter-spacing:4px;text-transform:uppercase;color:var(--green);display:block;margin-bottom:20px;">Football · March 10, 2026 · 8 min read</span>
+          <p>It started as just a way to stay active. But for many of our members at Match-Box, showing up twice a week for football turned into something much bigger — a ritual, a community, a turning point.</p>
+          <h4>The Physical Shift</h4>
+          <p>Within a month of consistent play, members reported better stamina, faster reflexes, and improved sleep. The high-intensity nature of 5-a-side football means you're getting a full-body workout without it ever feeling like a chore. "I stopped going to the gym," one regular told us. "The turf replaced it completely."</p>
+          <h4>The Social Side</h4>
+          <p>Some of our most loyal groups started as strangers who booked adjacent slots. Today they coordinate schedules, celebrate birthdays on the turf, and hold each other accountable. That's the Match-Box effect — sport as a social glue.</p>
+          <h4>Want In?</h4>
+          <p>Whether you're a beginner or a seasoned player, there's a game for you at Match-Box. Book your slot via WhatsApp and come see what twice a week can do for you.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 Blog Cards -->
+    <div class="blog-grid">
+
+      <article class="blog-card reveal" itemscope itemtype="https://schema.org/BlogPosting">
+        <div class="blog-card-img-wrap">
+          <img src="turf3.jpg" alt="Pickleball Beginners Guide" itemprop="image" loading="lazy">
+          <span class="blog-card-tag">Pickleball</span>
+        </div>
+        <div class="blog-card-body">
+          <time class="blog-card-date" itemprop="datePublished" datetime="2026-03-05">Mar 5, 2026 · 4 min read</time>
+          <h3 class="blog-card-title" itemprop="headline">Pickleball for Beginners: Everything You Need to Know Before Your First Game</h3>
+          <p itemprop="description">Never picked up a paddle? Here's your no-fluff guide to Mysore's fastest growing sport.</p>
+          <button class="blog-read-more" onclick="toggleCard(this, 'card1')">Read More →</button>
+        </div>
+      </article>
+
+      <article class="blog-card reveal" itemscope itemtype="https://schema.org/BlogPosting">
+        <div class="blog-card-img-wrap">
+          <img src="events_corporate.jpg" alt="Corporate Sports Events" itemprop="image" loading="lazy">
+          <span class="blog-card-tag">Corporate</span>
+        </div>
+        <div class="blog-card-body">
+          <time class="blog-card-date" itemprop="datePublished" datetime="2026-02-20">Feb 20, 2026 · 5 min read</time>
+          <h3 class="blog-card-title" itemprop="headline">Why Mysore Companies Are Replacing Team Lunches With Sports Days</h3>
+          <p itemprop="description">Team bonding on a turf beats a boardroom every time. Here's what our corporate clients say.</p>
+          <button class="blog-read-more" onclick="toggleCard(this, 'card2')">Read More →</button>
+        </div>
+      </article>
+
+      <article class="blog-card reveal" itemscope itemtype="https://schema.org/BlogPosting">
+        <div class="blog-card-img-wrap">
+          <img src="turf2.jpg" alt="Box Cricket Tips" itemprop="image" loading="lazy">
+          <span class="blog-card-tag">Box Cricket</span>
+        </div>
+        <div class="blog-card-body">
+          <time class="blog-card-date" itemprop="datePublished" datetime="2026-02-10">Feb 10, 2026 · 3 min read</time>
+          <h3 class="blog-card-title" itemprop="headline">5 Box Cricket Strategies That Will Make You Unbeatable at Match-Box</h3>
+          <p itemprop="description">Tight boundaries, fast overs, big pressure. Master these tactics and dominate every game.</p>
+          <button class="blog-read-more" onclick="toggleCard(this, 'card3')">Read More →</button>
+        </div>
+      </article>
+
+      <!-- Expand panels — span full 3 cols, shown below cards -->
+      <div class="blog-expand" id="card1">
+        <div class="blog-expand-inner">
+          <div class="blog-expand-header">
+            <div class="blog-expand-title">Pickleball for Beginners: Everything You Need to Know Before Your First Game</div>
+            <button class="blog-expand-close" onclick="toggleCard(null,'card1')">✕ Close</button>
+          </div>
+          <span class="blog-expand-meta">Pickleball · March 5, 2026 · 4 min read</span>
+          <div class="blog-expand-body">
+            <p>Pickleball is the fastest growing sport in India right now — and Match-Box Mysore has four premium courts waiting for you. If you've never played before, here's everything you need to walk in with confidence.</p>
+            <h4>What Is Pickleball?</h4>
+            <p>Think of it as a mix between tennis, badminton, and table tennis. Played on a smaller court with a solid paddle and a plastic ball with holes, it's easy to pick up but endlessly fun to master. Games are typically played to 11 points, win by 2.</p>
+            <h4>What to Bring</h4>
+            <p>Just yourself and some sports shoes. Match-Box provides paddles and balls for beginners. Wear comfortable athletic wear and bring water — you'll work up a sweat faster than you expect.</p>
+            <h4>Your First Game</h4>
+            <p>Don't worry about technique on day one. Focus on getting the ball over the net and staying out of the kitchen (the non-volley zone near the net). Everything else comes with reps. Our coaches are also available if you want structured guidance.</p>
+            <h4>Ready to Play?</h4>
+            <p>Book a pickleball slot at any of our three Mysore locations via WhatsApp. Courts fill up fast on evenings and weekends, so book ahead!</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="blog-expand" id="card2">
+        <div class="blog-expand-inner">
+          <div class="blog-expand-header">
+            <div class="blog-expand-title">Why Mysore Companies Are Replacing Team Lunches With Sports Days</div>
+            <button class="blog-expand-close" onclick="toggleCard(null,'card2')">✕ Close</button>
+          </div>
+          <span class="blog-expand-meta">Corporate · February 20, 2026 · 5 min read</span>
+          <div class="blog-expand-body">
+            <p>The company team lunch had a good run. But more and more Mysore businesses are swapping the restaurant booking for a turf booking — and the results speak for themselves.</p>
+            <h4>Why Sport Works Better Than Lunch</h4>
+            <p>Shared physical activity creates bonds that a meal simply can't replicate. When colleagues compete, celebrate, and sweat together, it builds trust faster and breaks down hierarchy in a way that no team-building workshop can match.</p>
+            <h4>What Companies Are Booking</h4>
+            <p>Our most popular corporate package is a half-day sports event combining football, pickleball, and box cricket — split into teams with a mini tournament format. We handle the setup, you just show up and play.</p>
+            <h4>Flexible Packages</h4>
+            <p>We offer one-day events, monthly wellness programs, and fully customized sports days. Whether you have 10 employees or 100, we can accommodate your team across our three Mysore locations.</p>
+            <h4>Get In Touch</h4>
+            <p>Reach out via WhatsApp to discuss a package for your company. We'll put together a plan that fits your team size, budget, and schedule.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="blog-expand" id="card3">
+        <div class="blog-expand-inner">
+          <div class="blog-expand-header">
+            <div class="blog-expand-title">5 Box Cricket Strategies That Will Make You Unbeatable at Match-Box</div>
+            <button class="blog-expand-close" onclick="toggleCard(null,'card3')">✕ Close</button>
+          </div>
+          <span class="blog-expand-meta">Box Cricket · February 10, 2026 · 3 min read</span>
+          <div class="blog-expand-body">
+            <p>Box cricket is fast, chaotic, and brilliant. The smaller pitch and shorter overs mean every ball matters. Here are five strategies that separate winners from everyone else on the Match-Box turf.</p>
+            <h4>1. Rotate the Strike</h4>
+            <p>Don't go for sixes every ball. Singles and twos add up fast in short formats and keep the scoreboard ticking without the risk of losing wickets.</p>
+            <h4>2. Bowl to the Boundaries</h4>
+            <p>In box cricket, the side boundaries are tight. Bowl wide yorkers to force batters into awkward angles — the walls become your extra fielder.</p>
+            <h4>3. Set Your Field Early</h4>
+            <p>Before the first ball, discuss fielding positions with your team. Box cricket moves too fast to reorganize mid-over. Cover the straight boundary and the square leg — those are the most common scoring zones.</p>
+            <h4>4. Use Your Last Over Wisely</h4>
+            <p>Save your best bowler for the final over, not the first. The pressure of the last few balls is where games are won and lost.</p>
+            <h4>5. Communicate Constantly</h4>
+            <p>Call for every run. Box cricket run-outs are extremely common due to the tight dimensions. Loud, clear communication between batters is the single most underrated skill in the format.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ── END BLOG SECTION ────────────────────────────────── -->
+
 <section id="gallery">
   <div style="max-width:1200px;margin:auto;">
     <p class="section-label reveal">The Grounds</p>
@@ -989,6 +1415,35 @@ heroBg.style.opacity = '1';
 heroBg.style.transition = 'opacity 1.2s ease';
 setInterval(nextHero, 5000);
 
+// Blog inline expand
+function toggleCard(btn, id) {
+  const panel = document.getElementById(id);
+  const isOpen = panel.classList.contains('open');
+  // Close all panels first
+  document.querySelectorAll('.blog-expand').forEach(p => {
+    p.classList.remove('open');
+  });
+  document.querySelectorAll('.blog-card').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.blog-read-more').forEach(b => { if(b.tagName==='BUTTON') b.textContent = b.textContent.replace('Close ✕','Read More →'); });
+  // If it wasn't open, open it
+  if (!isOpen) {
+    panel.classList.add('open');
+    if (btn) {
+      btn.textContent = 'Close ✕';
+      btn.closest('.blog-card').classList.add('active');
+    }
+    setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
+  }
+}
+
+function toggleFeatured(btn) {
+  const panel = document.getElementById('featured-expand');
+  const isOpen = panel.classList.contains('open');
+  panel.classList.toggle('open');
+  btn.textContent = isOpen ? 'Read Article →' : 'Close Article ✕';
+  if (!isOpen) setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
+}
+
 const observer = new IntersectionObserver(entries => {
   entries.forEach((e, i) => {
     if (e.isIntersecting) {
@@ -1002,6 +1457,3 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 </body>
 </html>
-
-
-
