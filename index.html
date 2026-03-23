@@ -938,6 +938,8 @@ footer p {
   /* Blog responsive */
   .blog-featured { grid-template-columns: 1fr; }
 
+  
+
   /* Fix 1: Limit Instagram widget to ~2-3 posts on mobile */
   #instagram .ft,
   #instagram [id^="ftyj"] {
@@ -945,21 +947,21 @@ footer p {
     overflow: hidden;
   }
 
-  /* Fix 2: Fix featured blog image on mobile */
-  .blog-featured-img {
-    min-height: 220px;
-    max-height: 260px;
+ /* Featured post: match regular blog card style on mobile */
+  .blog-featured {
+    display: flex !important;
+    flex-direction: column !important;
   }
-  .blog-featured-img img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
+  .blog-featured-img {
+    display: none;
   }
   .blog-featured-body {
     border-left: none;
-    border-top: 1px solid var(--glass-border);
-    padding: 28px 20px;
+    border-top: 2px solid var(--green);
+    padding: 24px 20px;
+  }
+  .blog-featured-body::before {
+    display: none;
   }
   .nav-logo { font-size: 1.3rem; letter-spacing: 2px; white-space: nowrap; }
   .nav-links { gap: 14px; }
