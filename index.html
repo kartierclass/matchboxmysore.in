@@ -935,6 +935,32 @@ footer p {
 
 @media (max-width: 900px) {
   nav { padding: 14px 20px; gap: 12px; }
+  /* Blog responsive */
+  .blog-featured { grid-template-columns: 1fr; }
+
+  /* Fix 1: Limit Instagram widget to ~2-3 posts on mobile */
+  #instagram .ft,
+  #instagram [id^="ftyj"] {
+    max-height: 520px;
+    overflow: hidden;
+  }
+
+  /* Fix 2: Fix featured blog image on mobile */
+  .blog-featured-img {
+    min-height: 220px;
+    max-height: 260px;
+  }
+  .blog-featured-img img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .blog-featured-body {
+    border-left: none;
+    border-top: 1px solid var(--glass-border);
+    padding: 28px 20px;
+  }
   .nav-logo { font-size: 1.3rem; letter-spacing: 2px; white-space: nowrap; }
   .nav-links { gap: 14px; }
   .nav-links a { font-size: 0.75rem; letter-spacing: 1px; }
