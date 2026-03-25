@@ -1122,6 +1122,32 @@ footer p {
   .query-form-wrap { padding: 32px 20px; }
 }
 /* ── END QUERY FORM ───────────────────────────────────────── */
+
+/* ── FLOATING QUERY BUTTON ───────────────────────────── */
+.float-query-btn {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 999;
+  background: var(--green);
+  color: var(--dark);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 14px 24px;
+  border-radius: 2px;
+  box-shadow: 0 0 30px rgba(0,255,106,0.45);
+  transition: transform 0.2s, box-shadow 0.3s;
+  animation: fadeUp 0.8s 1s ease both;
+}
+.float-query-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 50px rgba(0,255,106,0.65);
+}
+/* ── END FLOATING QUERY BUTTON ───────────────────────── */
   
 </style>
 </head>
@@ -1728,5 +1754,8 @@ document.getElementById('queryForm').addEventListener('submit', async function(e
 });
 </script>
 
+<!-- Floating Query Button -->
+<a href="#query" class="float-query-btn">⚡ Ask Us</a>
+ 
 </body>
 </html>
