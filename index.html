@@ -1148,6 +1148,40 @@ footer p {
   box-shadow: 0 0 50px rgba(0,255,106,0.65);
 }
 /* ── END FLOATING QUERY BUTTON ───────────────────────── */
+
+/* ── UPCOMING EVENTS ─────────────────────────────────────── */
+.upcoming-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.upcoming-card {
+  border: 1px solid var(--glass-border);
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s;
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+}
+.upcoming-card:hover {
+  border-color: rgba(0,255,106,0.45);
+  transform: translateY(-4px);
+}
+.upcoming-card img {
+  width: 100%;
+  display: block;
+  transition: transform 0.5s ease;
+}
+.upcoming-card:hover img {
+  transform: scale(1.03);
+}
+
+@media (max-width: 900px) {
+  .upcoming-grid { grid-template-columns: 1fr; }
+}
+/* ── END UPCOMING EVENTS ─────────────────────────────────── */  
   
 </style>
 </head>
@@ -1286,6 +1320,27 @@ footer p {
   </div>
 </section>
 
+<!-- ── UPCOMING EVENTS SECTION ───────────────────────────── -->
+<section id="upcoming-events" style="background:var(--dark);">
+  <div style="max-width:1200px;margin:auto;">
+    <p class="section-label reveal">What's Coming</p>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:48px;">
+      <h2 class="section-title reveal" style="margin-bottom:0;">Upcoming<br>Events</h2>
+      <img src="Matchboxgreenlogo.png" alt="Match-Box Logo" class="reveal"
+        style="width:200px;opacity:0.75;filter:drop-shadow(0 0 12px rgba(0,255,106,0.3));flex-shrink:0;">
+    </div>
+    <div class="upcoming-grid">
+      <div class="upcoming-card reveal">
+        <img src="event1.jpg" alt="Pickleball Summer Camp 2026">
+      </div>
+      <div class="upcoming-card reveal">
+        <img src="event2.jpg" alt="Football Summer Camp 2026">
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ── END UPCOMING EVENTS SECTION ──────────────────────── -->
+  
 <section id="coaching">
   <div style="max-width:1200px;margin:auto;">
     <p class="section-label reveal">Train With The Best</p>
