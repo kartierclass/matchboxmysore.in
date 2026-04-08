@@ -715,7 +715,7 @@ footer p {
 </footer>
 
 <script>
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzUwNHN2Y1sbXs2OJ-ZJR_H0X1MXaPCdLK_W5GuJP44UC8BUjAP05vZUdWbEsmefFfu_g/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyhgXsNO5sx01OIYv293qpQm0eAPSa4KX4ldvVVYjuOy_NeLk-7FrIghPhy4k1sJjh54A/exec';
 
 // Cursor
 const cursor = document.getElementById('cursor');
@@ -813,22 +813,18 @@ async function uploadScreenshot() {
   progress.style.display = 'block';
   bar.style.width = '30%';
 
+  const fd = new FormData();
+  fd.append('type', 'upload');
+  fd.append('file', screenshotBase64);
+  fd.append('mime', screenshotMime);
+  fd.append('name', screenshotName);
+
   bar.style.width = '60%';
-  const res = await fetch(SCRIPT_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      type: 'upload',
-      file: screenshotBase64,
-      mime: screenshotMime,
-      name: screenshotName
-    })
-  });
+  const res = await fetch(SCRIPT_URL, { method: 'POST', body: fd });
   bar.style.width = '100%';
   const data = await res.json();
   return data.link;
 }
-
 // Submit order
 document.getElementById('orderForm').addEventListener('submit', async function(e) {
   e.preventDefault();
@@ -876,12 +872,17 @@ document.getElementById('orderForm').addEventListener('submit', async function(e
       screenshotLink: screenshotLink
     };
 
-    await fetch(SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
+   const fd2 = new FormData();
+   fd2.append('name', payload.name);
+   fd2.append('phone', payload.phone);
+   fd2.append('jersey', payload.jersey);
+   fd2.append('size', payload.size);
+   fd2.append('quantity', payload.quantity);
+   fd2.append('playerName', payload.playerName);
+   fd2.append('playerNumber', payload.playerNumber);
+   fd2.append('totalPrice', payload.totalPrice);
+   fd2.append('screenshotLink', payload.screenshotLink);
+   await fetch(SCRIPT_URL, { method: 'POST', body: fd2 });
 
     success.style.display = 'block';
     this.reset();
