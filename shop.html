@@ -715,7 +715,7 @@ footer p {
 </footer>
 
 <script>
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwtteclmJnosZwhJywu7g2h05YQwUkdLr8Qr-4RCzG5ZlqULiylwTVoDM3vXGyQbDbbBw/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzUwNHN2Y1sbXs2OJ-ZJR_H0X1MXaPCdLK_W5GuJP44UC8BUjAP05vZUdWbEsmefFfu_g/exec';
 
 // Cursor
 const cursor = document.getElementById('cursor');
@@ -813,10 +813,17 @@ async function uploadScreenshot() {
   progress.style.display = 'block';
   bar.style.width = '30%';
 
-  const url = `${SCRIPT_URL}?file=${encodeURIComponent(screenshotBase64)}&name=${encodeURIComponent(screenshotName)}&mime=${encodeURIComponent(screenshotMime)}`;
-  
   bar.style.width = '60%';
-  const res = await fetch(url, { method: 'GET' });
+  const res = await fetch(SCRIPT_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      type: 'upload',
+      file: screenshotBase64,
+      mime: screenshotMime,
+      name: screenshotName
+    })
+  });
   bar.style.width = '100%';
   const data = await res.json();
   return data.link;
