@@ -19,491 +19,106 @@
   --text: #e2f0e8;
   --muted: rgba(226,240,232,0.5);
 }
-
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior: smooth; }
-body {
-  background: var(--dark);
-  color: var(--text);
-  font-family: 'Barlow', sans-serif;
-  overflow-x: hidden;
-  cursor: none;
-}
-
-.cursor {
-  position: fixed; width:10px; height:10px;
-  background: var(--green); border-radius:50%;
-  pointer-events:none; z-index:9999;
-  transform:translate(-50%,-50%);
-  box-shadow: 0 0 12px var(--green), 0 0 30px var(--green-glow);
-}
-.cursor-ring {
-  position:fixed; width:36px; height:36px;
-  border:1.5px solid rgba(0,255,106,0.5); border-radius:50%;
-  pointer-events:none; z-index:9998;
-  transform:translate(-50%,-50%);
-  transition: transform 0.12s ease, width 0.2s, height 0.2s;
-}
-
-body::before {
-  content:'';
-  position:fixed; inset:0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events:none; z-index:1; opacity:0.4;
-}
-
+body { background:var(--dark); color:var(--text); font-family:'Barlow',sans-serif; overflow-x:hidden; cursor:none; }
+.cursor { position:fixed; width:10px; height:10px; background:var(--green); border-radius:50%; pointer-events:none; z-index:9999; transform:translate(-50%,-50%); box-shadow:0 0 12px var(--green),0 0 30px var(--green-glow); }
+.cursor-ring { position:fixed; width:36px; height:36px; border:1.5px solid rgba(0,255,106,0.5); border-radius:50%; pointer-events:none; z-index:9998; transform:translate(-50%,-50%); transition:transform 0.12s ease,width 0.2s,height 0.2s; }
+body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events:none; z-index:1; opacity:0.4; }
 ::-webkit-scrollbar { width:4px; }
 ::-webkit-scrollbar-track { background:var(--dark); }
 ::-webkit-scrollbar-thumb { background:var(--green-dim); border-radius:2px; }
 
-/* NAV */
-nav {
-  position:fixed; top:0; width:100%;
-  display:flex; justify-content:space-between; align-items:center;
-  padding:18px 48px; z-index:100;
-  background:rgba(5,11,15,0.85);
-  backdrop-filter:blur(20px);
-  border-bottom:1px solid rgba(0,255,106,0.08);
-}
-.nav-logo {
-  font-family:'Bebas Neue',sans-serif;
-  font-size:1.8rem; letter-spacing:3px;
-  color:var(--green); text-decoration:none;
-  text-shadow:0 0 20px var(--green-glow);
-}
-.nav-back {
-  display:flex; align-items:center; gap:8px;
-  color:var(--muted); text-decoration:none;
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:0.85rem; letter-spacing:2px; text-transform:uppercase;
-  transition:color 0.2s;
-}
+nav { position:fixed; top:0; width:100%; display:flex; justify-content:space-between; align-items:center; padding:18px 48px; z-index:100; background:rgba(5,11,15,0.85); backdrop-filter:blur(20px); border-bottom:1px solid rgba(0,255,106,0.08); }
+.nav-logo { font-family:'Bebas Neue',sans-serif; font-size:1.8rem; letter-spacing:3px; color:var(--green); text-decoration:none; text-shadow:0 0 20px var(--green-glow); }
+.nav-back { display:flex; align-items:center; gap:8px; color:var(--muted); text-decoration:none; font-family:'Barlow Condensed',sans-serif; font-size:0.85rem; letter-spacing:2px; text-transform:uppercase; transition:color 0.2s; }
 .nav-back:hover { color:var(--green); }
 
-/* HERO */
-.shop-hero {
-  padding: 160px 60px 80px;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
-}
-.shop-hero::before {
-  content:'';
-  position:absolute; inset:0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(0,255,106,0.08) 0%, transparent 70%);
-  pointer-events:none;
-}
-.shop-hero-eyebrow {
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:0.8rem; letter-spacing:5px; text-transform:uppercase;
-  color:var(--green); margin-bottom:16px;
-  animation: fadeUp 0.8s ease both;
-}
-.shop-hero-title {
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(4rem,10vw,9rem);
-  line-height:0.9; letter-spacing:4px;
-  color:white; animation: fadeUp 0.8s 0.15s ease both;
-}
+.shop-hero { padding:160px 60px 80px; text-align:center; position:relative; overflow:hidden; }
+.shop-hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 0%,rgba(0,255,106,0.08) 0%,transparent 70%); pointer-events:none; }
+.shop-hero-eyebrow { font-family:'Barlow Condensed',sans-serif; font-size:0.8rem; letter-spacing:5px; text-transform:uppercase; color:var(--green); margin-bottom:16px; animation:fadeUp 0.8s ease both; }
+.shop-hero-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(4rem,10vw,9rem); line-height:0.9; letter-spacing:4px; color:white; animation:fadeUp 0.8s 0.15s ease both; }
 .shop-hero-title span { color:var(--green); }
-.shop-hero-sub {
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:1.1rem; letter-spacing:4px; text-transform:uppercase;
-  color:var(--muted); margin-top:16px;
-  animation: fadeUp 0.8s 0.3s ease both;
-}
+.shop-hero-sub { font-family:'Barlow Condensed',sans-serif; font-size:1.1rem; letter-spacing:4px; text-transform:uppercase; color:var(--muted); margin-top:16px; animation:fadeUp 0.8s 0.3s ease both; }
 
-/* OFFER BANNER */
-.offer-banner {
-  margin: 0 60px 60px;
-  padding: 20px 40px;
-  background: rgba(0,255,106,0.07);
-  border: 1px solid rgba(0,255,106,0.3);
-  border-left: 4px solid var(--green);
-  display:flex; align-items:center; justify-content:center; gap:20px;
-  animation: fadeUp 0.8s 0.45s ease both;
-}
-.offer-banner-text {
-  font-family:'Bebas Neue',sans-serif;
-  font-size:1.6rem; letter-spacing:3px; color:white;
-}
+.offer-banner { margin:0 60px 60px; padding:20px 40px; background:rgba(0,255,106,0.07); border:1px solid rgba(0,255,106,0.3); border-left:4px solid var(--green); display:flex; align-items:center; justify-content:center; gap:20px; animation:fadeUp 0.8s 0.45s ease both; }
+.offer-banner-text { font-family:'Bebas Neue',sans-serif; font-size:1.6rem; letter-spacing:3px; color:white; }
 .offer-banner-text span { color:var(--green); }
-.offer-badge {
-  background:var(--green); color:var(--dark);
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:0.7rem; font-weight:700; letter-spacing:3px; text-transform:uppercase;
-  padding:6px 16px; border-radius:1px;
-  animation: pulse 2s ease infinite;
-}
+.offer-badge { background:var(--green); color:var(--dark); font-family:'Barlow Condensed',sans-serif; font-size:0.7rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; padding:6px 16px; border-radius:1px; animation:pulse 2s ease infinite; }
 
-/* JERSEYS GRID */
-.jerseys-section {
-  padding: 0 60px 80px;
-  max-width:1300px; margin:auto;
-}
-.jerseys-grid {
-  display:grid; grid-template-columns:repeat(4,1fr);
-  gap:3px;
-}
-
-.jersey-card {
-  background:var(--dark3);
-  border:1px solid var(--glass-border);
-  overflow:hidden; position:relative;
-  cursor:none;
-  transition:border-color 0.3s, transform 0.3s;
-}
+.jerseys-section { padding:0 60px 80px; max-width:1300px; margin:auto; }
+.jerseys-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:3px; }
+.jersey-card { background:var(--dark3); border:1px solid var(--glass-border); overflow:hidden; position:relative; cursor:none; transition:border-color 0.3s,transform 0.3s; }
 .jersey-card:hover { border-color:rgba(0,255,106,0.5); transform:translateY(-4px); }
-.jersey-card.selected {
-  border-color:var(--green);
-  box-shadow:0 0 30px rgba(0,255,106,0.2);
-}
-.jersey-card.selected::before {
-  content:'✓ SELECTED';
-  position:absolute; top:12px; right:12px;
-  background:var(--green); color:var(--dark);
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:0.6rem; font-weight:700; letter-spacing:3px;
-  padding:4px 10px; z-index:3;
-}
-
-.jersey-img-wrap {
-  position:relative; overflow:hidden;
-  background: rgba(255,255,255,0.02);
-  padding: 24px 20px 16px;
-}
-.jersey-img-wrap img {
-  width:100%; display:block;
-  transition:transform 0.5s ease;
-  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.4));
-}
+.jersey-card.selected { border-color:var(--green); box-shadow:0 0 30px rgba(0,255,106,0.2); }
+.jersey-card.selected::before { content:'✓ SELECTED'; position:absolute; top:12px; right:12px; background:var(--green); color:var(--dark); font-family:'Barlow Condensed',sans-serif; font-size:0.6rem; font-weight:700; letter-spacing:3px; padding:4px 10px; z-index:3; }
+.jersey-img-wrap { position:relative; overflow:hidden; background:rgba(255,255,255,0.02); padding:24px 20px 16px; }
+.jersey-img-wrap img { width:100%; display:block; transition:transform 0.5s ease; filter:drop-shadow(0 8px 24px rgba(0,0,0,0.4)); }
 .jersey-card:hover .jersey-img-wrap img { transform:scale(1.05) translateY(-4px); }
-
 .jersey-card-body { padding:20px 20px 24px; }
-.jersey-name {
-  font-family:'Bebas Neue',sans-serif;
-  font-size:1.4rem; letter-spacing:2px; color:white;
-  margin-bottom:4px;
-}
-.jersey-price {
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:1rem; letter-spacing:2px;
-  color:var(--green);
-}
-.jersey-select-btn {
-  width:100%; margin-top:14px;
-  padding:10px;
-  background:transparent;
-  border:1px solid rgba(0,255,106,0.3);
-  color:var(--green);
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:0.75rem; letter-spacing:3px; text-transform:uppercase;
-  cursor:none; transition:all 0.2s;
-}
-.jersey-select-btn:hover,
-.jersey-card.selected .jersey-select-btn {
-  background:var(--green); color:var(--dark);
-  border-color:var(--green);
-}
+.jersey-name { font-family:'Bebas Neue',sans-serif; font-size:1.4rem; letter-spacing:2px; color:white; margin-bottom:4px; }
+.jersey-price { font-family:'Barlow Condensed',sans-serif; font-size:1rem; letter-spacing:2px; color:var(--green); }
+.jersey-select-btn { width:100%; margin-top:14px; padding:10px; background:transparent; border:1px solid rgba(0,255,106,0.3); color:var(--green); font-family:'Barlow Condensed',sans-serif; font-size:0.75rem; letter-spacing:3px; text-transform:uppercase; cursor:none; transition:all 0.2s; }
+.jersey-select-btn:hover, .jersey-card.selected .jersey-select-btn { background:var(--green); color:var(--dark); border-color:var(--green); }
 
-/* ORDER FORM */
-.order-section {
-  padding:80px 60px;
-  background:var(--dark2);
-  position:relative;
-}
-.order-section::before {
-  content:'';
-  position:absolute; top:0; left:0; right:0;
-  height:2px; background:var(--green);
-  box-shadow:0 0 20px var(--green);
-}
+.order-section { padding:80px 60px; background:var(--dark2); position:relative; }
+.order-section::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--green); box-shadow:0 0 20px var(--green); }
 .order-inner { max-width:800px; margin:auto; }
+.order-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(2rem,5vw,4rem); letter-spacing:3px; color:white; margin-bottom:8px; }
+.order-sub { font-family:'Barlow Condensed',sans-serif; font-size:0.8rem; letter-spacing:4px; text-transform:uppercase; color:var(--muted); margin-bottom:48px; }
 
-.order-title {
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(2rem,5vw,4rem);
-  letter-spacing:3px; color:white;
-  margin-bottom:8px;
-}
-.order-sub {
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:0.8rem; letter-spacing:4px; text-transform:uppercase;
-  color:var(--muted); margin-bottom:48px;
-}
-
-.selected-jersey-preview {
-  background:var(--glass);
-  border:1px solid var(--glass-border);
-  padding:20px 24px;
-  margin-bottom:32px;
-  display:flex; align-items:center; gap:20px;
-  transition:border-color 0.3s;
-}
+.selected-jersey-preview { background:var(--glass); border:1px solid var(--glass-border); padding:20px 24px; margin-bottom:32px; display:flex; align-items:center; gap:20px; transition:border-color 0.3s; }
 .selected-jersey-preview.active { border-color:rgba(0,255,106,0.4); }
 .preview-img { width:60px; flex-shrink:0; }
 .preview-img img { width:100%; filter:drop-shadow(0 4px 12px rgba(0,0,0,0.5)); }
-.preview-info {}
-.preview-label {
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:0.65rem; letter-spacing:4px; text-transform:uppercase;
-  color:var(--green); margin-bottom:4px;
-}
-.preview-name {
-  font-family:'Bebas Neue',sans-serif;
-  font-size:1.4rem; letter-spacing:2px; color:white;
-}
-.preview-empty {
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:0.85rem; letter-spacing:2px;
-  color:var(--muted);
-}
+.preview-label { font-family:'Barlow Condensed',sans-serif; font-size:0.65rem; letter-spacing:4px; text-transform:uppercase; color:var(--green); margin-bottom:4px; }
+.preview-name { font-family:'Bebas Neue',sans-serif; font-size:1.4rem; letter-spacing:2px; color:white; }
+.preview-empty { font-family:'Barlow Condensed',sans-serif; font-size:0.85rem; letter-spacing:2px; color:var(--muted); }
 
-.of-row {
-  display:grid; grid-template-columns:1fr 1fr;
-  gap:20px; margin-bottom:20px;
-}
-.of-field {
-  display:flex; flex-direction:column; gap:8px;
-  margin-bottom:20px;
-}
+.of-row { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:20px; }
+.of-field { display:flex; flex-direction:column; gap:8px; margin-bottom:20px; }
 .of-row .of-field { margin-bottom:0; }
-.of-label {
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:0.7rem; letter-spacing:4px; text-transform:uppercase;
-  color:var(--green);
-}
-.of-input {
-  background:rgba(255,255,255,0.03);
-  border:1px solid rgba(0,255,106,0.15);
-  color:var(--text);
-  font-family:'Barlow',sans-serif;
-  font-size:0.95rem; padding:14px 18px;
-  outline:none; border-radius:2px; width:100%;
-  transition:border-color 0.3s, background 0.3s, box-shadow 0.3s;
-}
+.of-label { font-family:'Barlow Condensed',sans-serif; font-size:0.7rem; letter-spacing:4px; text-transform:uppercase; color:var(--green); }
+.of-input { background:rgba(255,255,255,0.03); border:1px solid rgba(0,255,106,0.15); color:var(--text); font-family:'Barlow',sans-serif; font-size:0.95rem; padding:14px 18px; outline:none; border-radius:2px; width:100%; transition:border-color 0.3s,background 0.3s,box-shadow 0.3s; }
 .of-input::placeholder { color:rgba(226,240,232,0.25); }
-.of-input:focus {
-  border-color:rgba(0,255,106,0.6);
-  background:rgba(0,255,106,0.04);
-  box-shadow:0 0 16px rgba(0,255,106,0.1);
-}
-.of-select {
-  appearance:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2300ff6a' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat:no-repeat; background-position:right 16px center;
-  cursor:none;
-}
-.of-select option { background:var(--dark2); color:var(--text); }
+.of-input:focus { border-color:rgba(0,255,106,0.6); background:rgba(0,255,106,0.04); box-shadow:0 0 16px rgba(0,255,106,0.1); }
 
-/* Size selector */
-.size-options {
-  display:flex; gap:10px; flex-wrap:wrap;
-}
-.size-btn {
-  padding:10px 20px;
-  background:transparent;
-  border:1px solid rgba(0,255,106,0.2);
-  color:var(--muted);
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:0.85rem; letter-spacing:2px;
-  cursor:none; transition:all 0.2s; border-radius:2px;
-}
+.size-options { display:flex; gap:10px; flex-wrap:wrap; }
+.size-btn { padding:10px 20px; background:transparent; border:1px solid rgba(0,255,106,0.2); color:var(--muted); font-family:'Barlow Condensed',sans-serif; font-size:0.85rem; letter-spacing:2px; cursor:none; transition:all 0.2s; border-radius:2px; }
 .size-btn:hover { border-color:rgba(0,255,106,0.5); color:var(--text); }
-.size-btn.active {
-  background:var(--green); color:var(--dark);
-  border-color:var(--green); font-weight:700;
-}
+.size-btn.active { background:var(--green); color:var(--dark); border-color:var(--green); font-weight:700; }
 
-/* Quantity */
-.qty-wrap {
-  display:flex; align-items:center; gap:0;
-}
-.qty-btn {
-  width:44px; height:44px;
-  background:rgba(0,255,106,0.08);
-  border:1px solid rgba(0,255,106,0.2);
-  color:var(--green);
-  font-size:1.2rem; cursor:none;
-  transition:background 0.2s;
-  display:flex; align-items:center; justify-content:center;
-}
+.qty-wrap { display:flex; align-items:center; }
+.qty-btn { width:44px; height:44px; background:rgba(0,255,106,0.08); border:1px solid rgba(0,255,106,0.2); color:var(--green); font-size:1.2rem; cursor:none; transition:background 0.2s; display:flex; align-items:center; justify-content:center; }
 .qty-btn:hover { background:rgba(0,255,106,0.18); }
-.qty-display {
-  width:60px; height:44px;
-  background:rgba(255,255,255,0.03);
-  border-top:1px solid rgba(0,255,106,0.2);
-  border-bottom:1px solid rgba(0,255,106,0.2);
-  border-left:none; border-right:none;
-  color:var(--text); text-align:center;
-  font-family:'Bebas Neue',sans-serif;
-  font-size:1.3rem; letter-spacing:2px;
-  display:flex; align-items:center; justify-content:center;
-}
+.qty-display { width:60px; height:44px; background:rgba(255,255,255,0.03); border-top:1px solid rgba(0,255,106,0.2); border-bottom:1px solid rgba(0,255,106,0.2); border-left:none; border-right:none; color:var(--text); text-align:center; font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:2px; display:flex; align-items:center; justify-content:center; }
 
-/* Price summary */
-.price-summary {
-  background:var(--glass);
-  border:1px solid var(--glass-border);
-  padding:24px 28px;
-  margin-bottom:24px;
-  display:flex; justify-content:space-between; align-items:center;
-}
-.price-label {
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:0.75rem; letter-spacing:4px; text-transform:uppercase;
-  color:var(--muted);
-}
-.price-value {
-  font-family:'Bebas Neue',sans-serif;
-  font-size:2.2rem; letter-spacing:2px; color:var(--green);
-  text-shadow:0 0 20px var(--green-glow);
-}
-.price-note {
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:0.7rem; letter-spacing:2px;
-  color:var(--green); margin-top:4px;
-}
+.price-summary { background:var(--glass); border:1px solid var(--glass-border); padding:24px 28px; margin-bottom:24px; display:flex; justify-content:space-between; align-items:center; }
+.price-label { font-family:'Barlow Condensed',sans-serif; font-size:0.75rem; letter-spacing:4px; text-transform:uppercase; color:var(--muted); }
+.price-value { font-family:'Bebas Neue',sans-serif; font-size:2.2rem; letter-spacing:2px; color:var(--green); text-shadow:0 0 20px var(--green-glow); }
+.price-note { font-family:'Barlow Condensed',sans-serif; font-size:0.7rem; letter-spacing:2px; color:var(--green); margin-top:4px; }
 
-/* QR Section */
-.qr-section {
-  background:rgba(0,255,106,0.05);
-  border:1px solid rgba(0,255,106,0.2);
-  padding:28px;
-  margin-bottom:24px;
-  text-align:center;
-  overflow:hidden;
-}
-.qr-title {
-  font-family:'Bebas Neue',sans-serif;
-  font-size:1.4rem; letter-spacing:2px; color:white;
-  margin-bottom:8px;
-}
-.qr-sub {
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:0.8rem; letter-spacing:3px; text-transform:uppercase;
-  color:var(--muted); margin-bottom:20px;
-}
-.qr-placeholder {
-  width:160px; height:160px;
-  background:rgba(255,255,255,0.06);
-  border:2px dashed rgba(0,255,106,0.3);
-  margin:0 auto 16px;
-  display:flex; align-items:center; justify-content:center;
-  flex-direction:column; gap:8px;
-}
-.qr-placeholder span {
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:0.7rem; letter-spacing:3px; text-transform:uppercase;
-  color:var(--muted);
-}
+.qr-section { background:rgba(0,255,106,0.05); border:1px solid rgba(0,255,106,0.2); padding:28px; margin-bottom:24px; text-align:center; }
+.qr-title { font-family:'Bebas Neue',sans-serif; font-size:1.4rem; letter-spacing:2px; color:white; margin-bottom:8px; }
+.qr-sub { font-family:'Barlow Condensed',sans-serif; font-size:0.8rem; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+.qr-upi { font-family:'Barlow Condensed',sans-serif; font-size:0.8rem; letter-spacing:2px; color:var(--muted); margin-bottom:20px; }
 
-/* File upload */
-.file-upload-wrap {
-  position:relative;
-}
-.file-upload-label {
-  display:flex; align-items:center; gap:14px;
-  padding:16px 20px;
-  background:rgba(255,255,255,0.03);
-  border:1px dashed rgba(0,255,106,0.3);
-  cursor:none; transition:all 0.3s;
-}
-.file-upload-label:hover {
-  border-color:rgba(0,255,106,0.6);
-  background:rgba(0,255,106,0.04);
-}
-.file-upload-label.has-file {
-  border-style:solid;
-  border-color:rgba(0,255,106,0.5);
-  background:rgba(0,255,106,0.06);
-}
-.file-upload-icon { font-size:1.4rem; }
-.file-upload-text {
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:0.85rem; letter-spacing:2px; color:var(--muted);
-}
-.file-upload-text strong { color:var(--green); display:block; font-size:0.9rem; }
-input[type="file"] { display:none; }
-
-/* Submit */
-.of-submit {
-  width:100%; padding:20px;
-  background:var(--green); color:var(--dark);
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:1.1rem; font-weight:700; letter-spacing:3px; text-transform:uppercase;
-  border:none; cursor:none;
-  transition:box-shadow 0.3s, transform 0.2s, opacity 0.2s;
-  box-shadow:0 0 30px rgba(0,255,106,0.35);
-  margin-top:8px;
-}
+.of-submit { width:100%; padding:20px; background:var(--green); color:var(--dark); font-family:'Barlow Condensed',sans-serif; font-size:1.1rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; border:none; cursor:none; transition:box-shadow 0.3s,transform 0.2s,opacity 0.2s; box-shadow:0 0 30px rgba(0,255,106,0.35); margin-top:8px; }
 .of-submit:hover { transform:translateY(-2px); box-shadow:0 0 50px rgba(0,255,106,0.55); }
 .of-submit:disabled { opacity:0.5; transform:none; }
 
-.of-success {
-  margin-top:24px; padding:24px;
-  background:rgba(0,255,106,0.08);
-  border:1px solid rgba(0,255,106,0.3);
-  text-align:center; display:none;
-}
-.of-success-title {
-  font-family:'Bebas Neue',sans-serif;
-  font-size:1.8rem; letter-spacing:2px; color:var(--green);
-  margin-bottom:8px;
-}
-.of-success p {
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:0.85rem; letter-spacing:2px; color:var(--muted);
-}
-.of-error {
-  margin-top:20px; padding:16px 20px;
-  background:rgba(255,60,60,0.07);
-  border:1px solid rgba(255,60,60,0.25);
-  color:#ff6b6b;
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:0.85rem; letter-spacing:2px; text-align:center;
-  display:none;
-}
+.of-success { margin-top:24px; padding:24px; background:rgba(0,255,106,0.08); border:1px solid rgba(0,255,106,0.3); text-align:center; display:none; }
+.of-success-title { font-family:'Bebas Neue',sans-serif; font-size:1.8rem; letter-spacing:2px; color:var(--green); margin-bottom:8px; }
+.of-success p { font-family:'Barlow Condensed',sans-serif; font-size:0.85rem; letter-spacing:2px; color:var(--muted); line-height:1.9; }
+.of-error { margin-top:20px; padding:16px 20px; background:rgba(255,60,60,0.07); border:1px solid rgba(255,60,60,0.25); color:#ff6b6b; font-family:'Barlow Condensed',sans-serif; font-size:0.85rem; letter-spacing:2px; text-align:center; display:none; }
 
-/* Upload progress */
-.upload-progress {
-  margin-top:8px; height:2px;
-  background:rgba(0,255,106,0.1);
-  display:none;
-}
-.upload-progress-bar {
-  height:100%; background:var(--green);
-  width:0%; transition:width 0.3s ease;
-  box-shadow:0 0 8px var(--green);
-}
+footer { background:var(--dark); border-top:1px solid rgba(0,255,106,0.08); padding:32px 60px; display:flex; justify-content:space-between; align-items:center; }
+.footer-logo { font-family:'Bebas Neue',sans-serif; font-size:1.4rem; letter-spacing:3px; color:var(--green); text-shadow:0 0 15px var(--green-glow); }
+footer p { font-family:'Barlow Condensed',sans-serif; font-size:0.75rem; letter-spacing:2px; color:var(--muted); text-transform:uppercase; }
 
-footer {
-  background:var(--dark);
-  border-top:1px solid rgba(0,255,106,0.08);
-  padding:32px 60px;
-  display:flex; justify-content:space-between; align-items:center;
-}
-.footer-logo {
-  font-family:'Bebas Neue',sans-serif;
-  font-size:1.4rem; letter-spacing:3px;
-  color:var(--green); text-shadow:0 0 15px var(--green-glow);
-}
-footer p {
-  font-family:'Barlow Condensed',sans-serif;
-  font-size:0.75rem; letter-spacing:2px;
-  color:var(--muted); text-transform:uppercase;
-}
-
-@keyframes fadeUp {
-  from { opacity:0; transform:translateY(30px); }
-  to { opacity:1; transform:translateY(0); }
-}
-@keyframes pulse {
-  0%,100% { box-shadow:0 0 0 0 rgba(0,255,106,0.4); }
-  50% { box-shadow:0 0 0 8px rgba(0,255,106,0); }
-}
-
-.reveal { opacity:0; transform:translateY(40px); transition:opacity 0.7s ease, transform 0.7s ease; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);} }
+@keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(0,255,106,0.4);}50%{box-shadow:0 0 0 8px rgba(0,255,106,0);} }
+.reveal { opacity:0; transform:translateY(40px); transition:opacity 0.7s ease,transform 0.7s ease; }
 .reveal.visible { opacity:1; transform:translateY(0); }
 
 @media (max-width:900px) {
@@ -544,64 +159,48 @@ footer p {
   <div class="offer-banner-text">Buy 3 Jerseys @ Just <span>₹1000</span> &nbsp;·&nbsp; Single Jersey @ <span>₹400</span></div>
 </div>
 
-<!-- JERSEYS -->
 <div class="jerseys-section">
   <div class="jerseys-grid" id="jerseyGrid">
-
     <div class="jersey-card reveal" data-id="1" data-name="Crimson Strike" data-img="Jersey_1.png">
-      <div class="jersey-img-wrap">
-        <img src="Jersey_1.png" alt="Crimson Strike">
-      </div>
+      <div class="jersey-img-wrap"><img src="Jersey_1.png" alt="Crimson Strike"></div>
       <div class="jersey-card-body">
         <div class="jersey-name">Crimson Strike</div>
         <div class="jersey-price">₹400 / jersey</div>
         <button class="jersey-select-btn" onclick="selectJersey(this)">Select</button>
       </div>
     </div>
-
     <div class="jersey-card reveal" data-id="2" data-name="Tropic Charge" data-img="Jersey_2.png">
-      <div class="jersey-img-wrap">
-        <img src="Jersey_2.png" alt="Tropic Charge">
-      </div>
+      <div class="jersey-img-wrap"><img src="Jersey_2.png" alt="Tropic Charge"></div>
       <div class="jersey-card-body">
         <div class="jersey-name">Tropic Charge</div>
         <div class="jersey-price">₹400 / jersey</div>
         <button class="jersey-select-btn" onclick="selectJersey(this)">Select</button>
       </div>
     </div>
-
     <div class="jersey-card reveal" data-id="3" data-name="Ivory Elite" data-img="Jersey_3.png">
-      <div class="jersey-img-wrap">
-        <img src="Jersey_3.png" alt="Ivory Elite">
-      </div>
+      <div class="jersey-img-wrap"><img src="Jersey_3.png" alt="Ivory Elite"></div>
       <div class="jersey-card-body">
         <div class="jersey-name">Ivory Elite</div>
         <div class="jersey-price">₹400 / jersey</div>
         <button class="jersey-select-btn" onclick="selectJersey(this)">Select</button>
       </div>
     </div>
-
     <div class="jersey-card reveal" data-id="4" data-name="Phantom Core" data-img="Jersey_4.png">
-      <div class="jersey-img-wrap">
-        <img src="Jersey_4.png" alt="Phantom Core">
-      </div>
+      <div class="jersey-img-wrap"><img src="Jersey_4.png" alt="Phantom Core"></div>
       <div class="jersey-card-body">
         <div class="jersey-name">Phantom Core</div>
         <div class="jersey-price">₹400 / jersey</div>
         <button class="jersey-select-btn" onclick="selectJersey(this)">Select</button>
       </div>
     </div>
-
   </div>
 </div>
 
-<!-- ORDER FORM -->
 <div class="order-section" id="orderSection">
   <div class="order-inner">
     <div class="order-title reveal">Place Your Order</div>
-    <p class="order-sub reveal">Fill in your details · Upload payment · Done</p>
+    <p class="order-sub reveal">Fill in your details · Pay · Upload screenshot</p>
 
-    <!-- Selected Jersey Preview -->
     <div class="selected-jersey-preview reveal" id="jerseyPreview">
       <div class="preview-img" id="previewImg" style="display:none;">
         <img src="" alt="" id="previewImgTag">
@@ -614,7 +213,6 @@ footer p {
     </div>
 
     <form id="orderForm" autocomplete="off">
-
       <div class="of-row">
         <div class="of-field">
           <label class="of-label">Your Name</label>
@@ -625,7 +223,6 @@ footer p {
           <input class="of-input" type="tel" name="custPhone" placeholder="+91 XXXXX XXXXX" required>
         </div>
       </div>
-
       <div class="of-row">
         <div class="of-field">
           <label class="of-label">Name on Jersey</label>
@@ -636,18 +233,16 @@ footer p {
           <input class="of-input" type="number" name="playerNumber" placeholder="e.g. 10" min="1" max="99" required>
         </div>
       </div>
-
       <div class="of-field">
         <label class="of-label">Size</label>
-        <div class="size-options" id="sizeOptions">
+        <div class="size-options">
           <button type="button" class="size-btn" onclick="selectSize(this)">S</button>
           <button type="button" class="size-btn" onclick="selectSize(this)">M</button>
           <button type="button" class="size-btn" onclick="selectSize(this)">L</button>
           <button type="button" class="size-btn" onclick="selectSize(this)">XL</button>
         </div>
-        <input type="hidden" name="size" id="sizeInput" required>
+        <input type="hidden" name="size" id="sizeInput">
       </div>
-
       <div class="of-field">
         <label class="of-label">Quantity</label>
         <div class="qty-wrap">
@@ -657,8 +252,7 @@ footer p {
         </div>
       </div>
 
-      <!-- Price Summary -->
-      <div class="price-summary reveal" id="priceSummary">
+      <div class="price-summary reveal">
         <div>
           <div class="price-label">Total Amount</div>
           <div id="priceNote" class="price-note"></div>
@@ -666,44 +260,24 @@ footer p {
         <div class="price-value" id="priceDisplay">₹400</div>
       </div>
 
-      <!-- QR Code -->
       <div class="qr-section reveal">
         <div class="qr-title">Scan & Pay</div>
         <p class="qr-sub">Pay the total amount shown above</p>
-        <p style="font-family:'Barlow Condensed',sans-serif;font-size:0.8rem;letter-spacing:2px;color:var(--muted);">UPI · GPay · PhonePe · Paytm</p>
-        <div class="qr-placeholder">
-        <div>
-         <img src="upi-qr-code.jpg" alt="UPI QR Code" style="width:220px;max-height:220px;object-fit:contain;display:block;margin:0 auto 16px;">
-        </div>
-      </div>
-
-      <!-- Screenshot Upload -->
-      <div class="of-field">
-        <label class="file-upload-label" id="fileLabel" for="screenshotInput">
-          <span class="file-upload-icon">📎</span>
-          <div class="file-upload-text">
-            <strong>Upload Payment Screenshot</strong>
-            Tap to choose · JPG, PNG accepted
-          </div>
-        </label>
-        <input type="file" id="screenshotInput" accept="image/*" onchange="handleFileSelect(this)">
-        <div class="upload-progress" id="uploadProgress">
-          <div class="upload-progress-bar" id="uploadProgressBar"></div>
-        </div>
+        <p class="qr-upi">UPI · GPay · PhonePe · Paytm</p>
+        <img src="upi-qr-code.jpg" alt="UPI QR Code" style="width:220px;max-height:220px;object-fit:contain;display:block;margin:0 auto;">
       </div>
 
       <button type="submit" class="of-submit" id="submitBtn">
-        <span id="submitText">⚡ Place Order</span>
+        <span id="submitText">⚡ Place Order & Upload Screenshot</span>
       </button>
 
       <div class="of-success" id="orderSuccess">
         <div class="of-success-title">🎉 Order Placed!</div>
-        <p>We've received your order and payment. Our team will confirm within 24 hours via WhatsApp.</p>
+        <p>A payment screenshot form is opening in a new tab.<br>Please complete it to confirm your order.<br><br>Our team will confirm within 24 hours via WhatsApp.</p>
       </div>
       <div class="of-error" id="orderError">
         ❌ Something went wrong. Please try again or WhatsApp us at +91 9620192323.
       </div>
-
     </form>
   </div>
 </div>
@@ -716,8 +290,8 @@ footer p {
 
 <script>
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyhgXsNO5sx01OIYv293qpQm0eAPSa4KX4ldvVVYjuOy_NeLk-7FrIghPhy4k1sJjh54A/exec';
+const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSfSwv1Mc8bHRhk5BguJ5hDGyGLSwRsf5RS2Y11h1vDspiQPdw/viewform';
 
-// Cursor
 const cursor = document.getElementById('cursor');
 const ring = document.getElementById('cursorRing');
 let mx=0,my=0,rx=0,ry=0;
@@ -730,196 +304,119 @@ function animateCursor(){
 }
 animateCursor();
 
-// State
-let selectedJersey = null;
-let selectedSize = null;
-let quantity = 1;
-let screenshotBase64 = null;
-let screenshotMime = null;
-let screenshotName = null;
+let selectedJersey=null, selectedSize=null, quantity=1;
 
-// Jersey selection
 function selectJersey(btn) {
-  const card = btn.closest('.jersey-card');
-  document.querySelectorAll('.jersey-card').forEach(c => c.classList.remove('selected'));
+  const card=btn.closest('.jersey-card');
+  document.querySelectorAll('.jersey-card').forEach(c=>c.classList.remove('selected'));
   card.classList.add('selected');
-  selectedJersey = {
-    id: card.dataset.id,
-    name: card.dataset.name,
-    img: card.dataset.img
-  };
-  // Update preview
-  document.getElementById('previewImg').style.display = 'block';
-  document.getElementById('previewImgTag').src = selectedJersey.img;
-  document.getElementById('previewLabel').style.display = 'block';
-  document.getElementById('previewName').textContent = selectedJersey.name;
-  document.getElementById('previewEmpty').style.display = 'none';
+  selectedJersey={id:card.dataset.id,name:card.dataset.name,img:card.dataset.img};
+  document.getElementById('previewImg').style.display='block';
+  document.getElementById('previewImgTag').src=selectedJersey.img;
+  document.getElementById('previewLabel').style.display='block';
+  document.getElementById('previewName').textContent=selectedJersey.name;
+  document.getElementById('previewEmpty').style.display='none';
   document.getElementById('jerseyPreview').classList.add('active');
   updatePrice();
-  document.getElementById('orderSection').scrollIntoView({behavior:'smooth', block:'start'});
+  document.getElementById('orderSection').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
-// Size selection
 function selectSize(btn) {
-  document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.size-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  selectedSize = btn.textContent;
-  document.getElementById('sizeInput').value = selectedSize;
+  selectedSize=btn.textContent;
+  document.getElementById('sizeInput').value=selectedSize;
 }
 
-// Quantity
 function changeQty(delta) {
-  quantity = Math.max(1, Math.min(10, quantity + delta));
-  document.getElementById('qtyDisplay').textContent = quantity;
+  quantity=Math.max(1,Math.min(10,quantity+delta));
+  document.getElementById('qtyDisplay').textContent=quantity;
   updatePrice();
 }
 
-// Price calc
 function updatePrice() {
   let total;
-  const note = document.getElementById('priceNote');
-  if (quantity >= 3) {
-    const sets = Math.floor(quantity / 3);
-    const remainder = quantity % 3;
-    total = (sets * 1000) + (remainder * 400);
-    note.textContent = sets > 0 ? `🔥 ${sets}x Bundle offer applied!` : '';
+  const note=document.getElementById('priceNote');
+  if(quantity>=3){
+    const sets=Math.floor(quantity/3),rem=quantity%3;
+    total=(sets*1000)+(rem*400);
+    note.textContent=`🔥 ${sets}x Bundle offer applied!`;
   } else {
-    total = quantity * 400;
-    note.textContent = quantity < 3 ? 'Buy 3 to unlock ₹1000 bundle!' : '';
+    total=quantity*400;
+    note.textContent='Buy 3 to unlock ₹1000 bundle!';
   }
-  document.getElementById('priceDisplay').textContent = '₹' + total;
+  document.getElementById('priceDisplay').textContent='₹'+total;
 }
 
-// File select
-function handleFileSelect(input) {
-  const file = input.files[0];
-  if (!file) return;
-  const label = document.getElementById('fileLabel');
-  label.classList.add('has-file');
-  label.querySelector('.file-upload-text').innerHTML = `<strong>✓ ${file.name}</strong>Screenshot selected`;
-  screenshotMime = file.type;
-  screenshotName = 'payment_' + Date.now() + '_' + file.name;
-  const reader = new FileReader();
-  reader.onload = e => {
-    screenshotBase64 = e.target.result.split(',')[1];
-  };
-  reader.readAsDataURL(file);
-}
-
-// Upload screenshot to Drive
-async function uploadScreenshot() {
-  const progress = document.getElementById('uploadProgress');
-  const bar = document.getElementById('uploadProgressBar');
-  progress.style.display = 'block';
-  bar.style.width = '30%';
-
-  const fd = new FormData();
-  fd.append('type', 'upload');
-  fd.append('file', screenshotBase64);
-  fd.append('mime', screenshotMime);
-  fd.append('name', screenshotName);
-
-  bar.style.width = '60%';
-  const res = await fetch(SCRIPT_URL, { method: 'POST', body: fd });
-  bar.style.width = '100%';
-  const data = await res.json();
-  return data.link;
-}
-// Submit order
-document.getElementById('orderForm').addEventListener('submit', async function(e) {
+document.getElementById('orderForm').addEventListener('submit',async function(e){
   e.preventDefault();
+  if(!selectedJersey){alert('Please select a jersey first!');return;}
+  if(!selectedSize){alert('Please select a size!');return;}
 
-  if (!selectedJersey) { alert('Please select a jersey first!'); return; }
-  if (!selectedSize) { alert('Please select a size!'); return; }
-  if (!screenshotBase64) { alert('Please upload your payment screenshot!'); return; }
+  const btn=document.getElementById('submitBtn');
+  const btnText=document.getElementById('submitText');
+  const success=document.getElementById('orderSuccess');
+  const error=document.getElementById('orderError');
 
-  const btn = document.getElementById('submitBtn');
-  const btnText = document.getElementById('submitText');
-  const success = document.getElementById('orderSuccess');
-  const error = document.getElementById('orderError');
+  btn.disabled=true;
+  btnText.textContent='Placing order...';
+  success.style.display='none';
+  error.style.display='none';
 
-  btn.disabled = true;
-  btnText.textContent = 'Uploading screenshot...';
-  success.style.display = 'none';
-  error.style.display = 'none';
+  let total;
+  if(quantity>=3){const sets=Math.floor(quantity/3),rem=quantity%3;total=(sets*1000)+(rem*400);}
+  else{total=quantity*400;}
+
+  const payload={
+    name:this.custName.value.trim(),
+    phone:this.custPhone.value.trim(),
+    jersey:selectedJersey.name,
+    size:selectedSize,
+    quantity:quantity,
+    playerName:this.playerName.value.trim().toUpperCase(),
+    playerNumber:this.playerNumber.value,
+    totalPrice:'₹'+total,
+    screenshotLink:'Via Google Form'
+  };
 
   try {
-    // 1. Upload screenshot to Drive
-    const screenshotLink = await uploadScreenshot();
+    await fetch(SCRIPT_URL,{
+      method:'POST',
+      mode:'no-cors',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(payload)
+    });
 
-    btnText.textContent = 'Placing order...';
+    success.style.display='block';
+    setTimeout(()=>{window.open(FORM_URL,'_blank');},1500);
 
-    // 2. Calculate price
-    let total;
-    if (quantity >= 3) {
-      const sets = Math.floor(quantity / 3);
-      const remainder = quantity % 3;
-      total = (sets * 1000) + (remainder * 400);
-    } else {
-      total = quantity * 400;
-    }
-
-    // 3. Submit to Sheets
-    const payload = {
-      name: this.custName.value.trim(),
-      phone: this.custPhone.value.trim(),
-      jersey: selectedJersey.name,
-      size: selectedSize,
-      quantity: quantity,
-      playerName: this.playerName.value.trim().toUpperCase(),
-      playerNumber: this.playerNumber.value,
-      totalPrice: '₹' + total,
-      screenshotLink: screenshotLink
-    };
-
-   const fd2 = new FormData();
-   fd2.append('name', payload.name);
-   fd2.append('phone', payload.phone);
-   fd2.append('jersey', payload.jersey);
-   fd2.append('size', payload.size);
-   fd2.append('quantity', payload.quantity);
-   fd2.append('playerName', payload.playerName);
-   fd2.append('playerNumber', payload.playerNumber);
-   fd2.append('totalPrice', payload.totalPrice);
-   fd2.append('screenshotLink', payload.screenshotLink);
-   await fetch(SCRIPT_URL, { method: 'POST', body: fd2 });
-
-    success.style.display = 'block';
     this.reset();
-    document.querySelectorAll('.jersey-card').forEach(c => c.classList.remove('selected'));
-    document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById('qtyDisplay').textContent = '1';
-    quantity = 1; selectedJersey = null; selectedSize = null;
-    screenshotBase64 = null;
-    document.getElementById('previewName').textContent = '—';
-    document.getElementById('previewEmpty').style.display = 'block';
-    document.getElementById('previewImg').style.display = 'none';
-    document.getElementById('previewLabel').style.display = 'none';
-    document.getElementById('priceDisplay').textContent = '₹400';
-    document.getElementById('fileLabel').classList.remove('has-file');
-    document.getElementById('fileLabel').querySelector('.file-upload-text').innerHTML = '<strong>Upload Payment Screenshot</strong>Tap to choose · JPG, PNG accepted';
-    document.getElementById('uploadProgress').style.display = 'none';
+    document.querySelectorAll('.jersey-card').forEach(c=>c.classList.remove('selected'));
+    document.querySelectorAll('.size-btn').forEach(b=>b.classList.remove('active'));
+    document.getElementById('qtyDisplay').textContent='1';
+    quantity=1;selectedJersey=null;selectedSize=null;
+    document.getElementById('previewName').textContent='—';
+    document.getElementById('previewEmpty').style.display='block';
+    document.getElementById('previewImg').style.display='none';
+    document.getElementById('previewLabel').style.display='none';
+    document.getElementById('priceDisplay').textContent='₹400';
+    document.getElementById('priceNote').textContent='';
 
-  } catch(err) {
+  } catch(err){
     console.error(err);
-    error.style.display = 'block';
+    error.style.display='block';
   } finally {
-    btn.disabled = false;
-    btnText.textContent = '⚡ Place Order';
+    btn.disabled=false;
+    btnText.textContent='⚡ Place Order & Upload Screenshot';
   }
 });
 
-// Reveal observer
-const observer = new IntersectionObserver(entries => {
-  entries.forEach((e,i) => {
-    if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('visible'), i * 80);
-      observer.unobserve(e.target);
-    }
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*80);observer.unobserve(e.target);}
   });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 </script>
-
 </body>
 </html>
