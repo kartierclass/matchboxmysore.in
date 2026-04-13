@@ -382,9 +382,7 @@ document.getElementById('orderForm').addEventListener('submit',async function(e)
   try {
     await fetch(SCRIPT_URL,{
       method:'POST',
-      mode:'no-cors',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify(payload)
+      body: new URLSearchParams(payload)
     });
 
     success.style.display='block';
