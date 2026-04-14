@@ -450,6 +450,7 @@ document.getElementById('orderForm').addEventListener('submit', async function(e
     return;
   }
 
+  // Collect per-jersey details
   const jerseyDetails = [];
   let valid = true;
 
@@ -471,73 +472,6 @@ document.getElementById('orderForm').addEventListener('submit', async function(e
         playerNumber: numEl.value,
         size: sizeEl.value
       });
-    }
-  });
-
-  if (!valid) {
-    alert('Please fill in all jersey details!');
-    return;
-  }
-
-  const btn = document.getElementById('submitBtn');
-  const btnText = document.getElementById('submitText');
-  const success = document.getElementById('orderSuccess');
-  const error = document.getElementById('orderError');
-
-  btn.disabled = true;
-  btnText.textContent = 'Placing order...';
-  success.style.display = 'none';
-  error.style.display = 'none';
-
-  const { total, totalQty } = calcTotal();
-
-  const rows = jerseyDetails.map(item => ({
-    timestamp: new Date().toLocaleString(),
-    name: this.custName.value.trim(),
-    phone: this.custPhone.value.trim(),
-    jersey: item.jersey,
-    size: item.size,
-    number: item.playerNumber,
-    playerName: item.playerName,
-    totalQty: totalQty,
-    price: total,
-    screenshotLink: "Pending"
-  }));
-
-  try {
-    await fetch("https://sheetdb.io/api/v1/loy4rbgkcmkva", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ data: rows })
-    });
-
-    success.style.display = 'block';
-
-    setTimeout(() => {
-      window.open(FORM_URL, '_blank');
-    }, 1500);
-
-    this.reset();
-    Object.keys(cart).forEach(k => delete cart[k]);
-
-    document.querySelectorAll('.jersey-card').forEach(c => {
-      c.classList.remove('in-cart');
-      c.querySelector('.card-qty-display').textContent = '0';
-    });
-
-    renderCart();
-    updatePrice();
-
-  } catch (err) {
-    console.error(err);
-    error.style.display = 'block';
-  } finally {
-    btn.disabled = false;
-    btnText.textContent = '⚡ Place Order & Upload Screenshot';
-  }
-});
     }
   });
 
