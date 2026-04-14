@@ -512,12 +512,11 @@ document.getElementById('orderForm').addEventListener('submit', async function(e
     payload[`jersey${n}_size`]        = item.size;
   });
 
-  try {
-    await fetch(SCRIPT_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'text/plain' },
-    body: JSON.stringify(payload)
-  });
+   try {
+    const params = new URLSearchParams(payload);
+    const img = new Image();
+    img.src = SCRIPT_URL + '?' + params.toString();
+    await new Promise(r => setTimeout(r, 2000));
     
     success.style.display = 'block';
     setTimeout(() => { window.open(FORM_URL, '_blank'); }, 1500);
